@@ -1,1 +1,8 @@
+
+input : College_and_Universities.csv (eliminateComma.cpp)=> cleanCollege.csv
+
 cut -d, -f3-6,10,12,19,20,42-44 cleanCollege.csv > college2.txt
+
+input: college2.txt (convertCollege.cpp)=> collegeResult.txt
+
+input: collegeResult.txt, createCollege.sql (AWS MySQL) => database query
