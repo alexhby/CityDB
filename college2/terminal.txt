@@ -1,1 +1,1 @@
-cut -d, -f3-6,10,12,19,20,42-44 Colleges_and_Universities.csv > college2.txt
+cut -d, -f3-6,10,12,19,20,42-44 cleanCollege.csv > college2.txt
