@@ -10,9 +10,11 @@ int main(){
 	myfile.open("collegeResult.sql");
 
 	ifstream input("college2.txt");
-	string line1 = "insert into college2(IPEDSID,NAME,ADDRESS,ZIP,TELEPHONE,LATITUDE,LONGITUDE,TOT_ENROLL,HOUSING,DORM_CAP) values ";
+	string line1 = "insert into college2(IPEDSID,NAME,ADDRESS,ZIP,TELEPHONE,LATITUDE,LONGITUDE,TOT_ENROLL,HOUSING,DORM_CAP,TOT_EMPLOY) values ";
 	myfile << line1 << "\n";
 	string line;
+
+	getline(input, line);
 
 	while(getline(input, line)){
 		istringstream iStr(line);
@@ -60,8 +62,10 @@ int main(){
 		getline(iStr, HOUSING, ',');
 		string DORM_CAP;
 		getline(iStr, DORM_CAP, ',');
+		string TOT_EMPLOY;
+		getline(iStr, TOT_EMPLOY, ',');
 
-		string temp = "('"+IPEDSID+"','"+NAME+"','"+ADDRESS+"','"+ZIP+"','"+TELEPHONE+"','"+LATITUDE+"','"+LONGITUDE+"','"+TOT_ENROLL+"','"+HOUSING+"','"+DORM_CAP+"'),";
+		string temp = "('"+IPEDSID+"','"+NAME+"','"+ADDRESS+"','"+ZIP+"','"+TELEPHONE+"','"+LATITUDE+"','"+LONGITUDE+"','"+TOT_ENROLL+"','"+HOUSING+"','"+DORM_CAP+"','"+TOT_EMPLOY+"'),";
 		myfile << temp << "\n";
 	}
 	return 0;
