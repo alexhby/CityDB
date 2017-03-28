@@ -7,10 +7,10 @@ using namespace std;
 
 int main(){
 	ofstream myfile;
-	myfile.open("collegeResult.sql");
+	myfile.open("college1Result.sql");
 
-	ifstream input("college2.txt");
-	string line1 = "insert into college2(IPEDSID,NAME,ADDRESS,ZIP,TELEPHONE,LATITUDE,LONGITUDE,TOT_ENROLL,HOUSING,DORM_CAP,TOT_EMPLOY) values ";
+	ifstream input("college1.csv");
+	string line1 = "insert into college1(UNITID,OPEID,OPEID6,INSTNM,CITY,STABBR,INSTURL,NPCURL,UGDS,GRAD_DEBT_MDN_SUPP) values ";
 	myfile << line1 << "\n";
 	string line;
 
@@ -18,14 +18,14 @@ int main(){
 
 	while(getline(input, line)){
 		istringstream iStr(line);
-		string FID;
-		getline(iStr, FID, ',');
+
 		string IPEDSID;
 		getline(iStr, IPEDSID, ',');
 
 		string NAME = "";
 		string tempName;
 		getline(iStr, tempName, ',');
+
 		for(int i=0; i<tempName.length(); ++i){
 			if(tempName[i] == '\''){
 				NAME += '\\';
@@ -40,6 +40,7 @@ int main(){
 		string ADDRESS = "";
 		string tempAdd;
 		getline(iStr, tempAdd, ',');
+		
 		for(int i=0; i<tempAdd.length(); ++i){
 			if(tempAdd[i] == '\''){
 				ADDRESS += '\\';
@@ -50,9 +51,32 @@ int main(){
 			}
 		}
 		string ZIP;
-		getline(iStr, ZIP, ',');
-		string TELEPHONE;
-		getline(iStr, TELEPHONE, ',');
+		string tZIP;
+		getline(iStr, tZIP, ',');
+		for(int i=0; i<tZIP.length(); ++i){
+			if(tZIP[i] == '\''){
+				ZIP += '\\';
+				ZIP += '\'';
+				//NAME += " ";
+				//cout << "detected!!!!!!!!!!!" << endl;
+			}
+			else 
+				ZIP += tZIP[i];
+		}
+
+		string ZIP2;
+		string tZIP2;
+		getline(iStr, tZIP2, ',');
+		for(int i=0; i<tZIP2.length(); ++i){
+			if(tZIP2[i] == '\''){
+				ZIP2 += '\\';
+				ZIP2 += '\'';
+				//NAME += " ";
+				//cout << "detected!!!!!!!!!!!" << endl;
+			}
+			else 
+				ZIP2 += tZIP2[i];
+		}	
 		string LATITUDE;
 		getline(iStr, LATITUDE, ',');
 		string LONGITUDE;
@@ -63,10 +87,8 @@ int main(){
 		getline(iStr, HOUSING, ',');
 		string DORM_CAP;
 		getline(iStr, DORM_CAP, ',');
-		string TOT_EMPLOY;
-		getline(iStr, TOT_EMPLOY, ',');
 
-		string temp = "('"+IPEDSID+"','"+NAME+"','"+ADDRESS+"','"+ZIP+"','"+TELEPHONE+"','"+LATITUDE+"','"+LONGITUDE+"','"+TOT_ENROLL+"','"+HOUSING+"','"+DORM_CAP+"','"+TOT_EMPLOY+"'),";
+		string temp = "('"+IPEDSID+"','"+NAME+"','"+ADDRESS+"','"+ZIP+"','"+ZIP2+"','"+LATITUDE+"','"+LONGITUDE+"','"+TOT_ENROLL+"','"+HOUSING+"','"+DORM_CAP+"'),";
 		myfile << temp << "\n";
 	}
 	return 0;
