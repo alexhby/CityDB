@@ -8,7 +8,7 @@ int main(){
 	myfile.open("resultQuery.txt");
 
 	ifstream input("company.txt");
-	string line1 = "insert into company(pastRank, Name, City, State, zipCode, altitude, latitude) values ";
+	string line1 = "insert into company(pastRank, Name, City, State, zipCode, latitude, longitude) values ";
 	myfile << line1 << "\n";
 	string line;
 
@@ -33,11 +33,11 @@ int main(){
 		getline(iStr, State, '\t');
 		string zipCode;
 		getline(iStr, zipCode, '\t');
-		string altitude;
-		getline(iStr, altitude, '\t');
 		string latitude;
 		getline(iStr, latitude, '\t');
-		string temp = "('"+pastRank+"','"+Name+"','"+City+"','"+State+"','"+zipCode+"','"+altitude+"','"+latitude+"'),";
+		string longitude;
+		getline(iStr, longitude, '\t');
+		string temp = "('"+pastRank+"','"+Name+"','"+City+"','"+State+"','"+zipCode+"','"+latitude+"','"+longitude+"'),";
 		myfile << temp << "\n";
 	}
 	return 0;

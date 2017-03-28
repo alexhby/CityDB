@@ -1,4 +1,4 @@
-INSERT INTO company(pastRank,Name,City,State,zipCode,altitude,latitude) 
+INSERT INTO company(pastRank,Name,City,State,zipCode,latitude,longitude) 
 VALUES  ('1','Walmart','Bentonville','Arkansas','72716','-94.217629','36.365378'),
 ('2','Exxon Mobil','Irving','Texas','75039','-96.949909','32.890006'),
 ('3','Chevron','San Ramon','California','94583','-121.958096','37.758251'),
