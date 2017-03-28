@@ -40,9 +40,9 @@ public class extract {
 	
 	static String[] attributes = {"http://dbpedia.org/property/owners", "http://dbpedia.org/property/leader", "http://dbpedia.org/property/website"};
 	
-    static String rdb_url = "jdbc:mysql://citydb.cmxfcjcooglc.us-west-2.rds.amazonaws.com:3306/citydb";
+    static String rdb_url = "jdbc:mysql://aws-us-east-1-portal.26.dblayer.com:17934/citydb";
     
-    static String rdb_user = "cityDB";
+    static String rdb_user = "admin";
     
     static String rdb_pwd = "citydb1234";
 	
@@ -58,6 +58,10 @@ public class extract {
 		
 		
 		maps.put("http://dbpedia.org/property/website", "website");
+		
+		maps.put("http://dbpedia.org/ontology/type", "type");
+		
+		maps.put("http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "type");
 
 	}
 	
@@ -188,6 +192,8 @@ public class extract {
 			    				}
 			    				
 			    				
+
+			    				
 			    				if(inserted_key.equals("introduction"))
 			    				{
 			    					if(!value.endsWith("@en"))
@@ -215,23 +221,39 @@ public class extract {
 			    				}
 			    				
 			    				
+			    				
+			    				
 			    				if(inserted_key.equals(old))
 			    				{
 			    					vals.add(inserted_val);
 			    				}
 			    				else
 			    				{
-//			    					String []keys = key.split("/"); 
 			    					
-//			    					vals.add(value);
+			    					
 			    					
 			    					if(old != null && old.length() > 0)
 			    					{
 			    						insert.insert(b_object, old, vals);
 			    						
 			    						old = inserted_key;
-					    				vals.clear();
-					    				vals.add(inserted_val);
+			    						
+			    						if(b_object.get(inserted_key) != null)
+					    				{
+					    					ArrayList<String> list = (ArrayList<String>) b_object.get(inserted_key);
+					    					
+					    					vals = list;
+					    					
+			    							vals.add(inserted_val);
+
+					    					
+					    				}
+			    						else
+			    						{
+			    							vals.clear();
+			    							vals.add(inserted_val);
+			    						}
+					    				
 			    					}
 			    					else
 			    					{

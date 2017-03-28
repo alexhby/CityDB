@@ -31,6 +31,6 @@
 	<classpathentry kind="lib" path="lib/xercesImpl-2.11.0.jar"/>
 	<classpathentry kind="lib" path="lib/xml-apis-1.4.01.jar"/>
 	<classpathentry kind="lib" path="lib/mysql-connector-java-5.0.8-bin.jar"/>
-	<classpathentry kind="lib" path="lib/mongo-java-driver-2.11.3.jar"/>
+	<classpathentry kind="lib" path="lib/mongo-java-driver-3.0.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
