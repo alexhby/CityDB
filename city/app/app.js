@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var index_map = require('./routes/index_map')
-
+var NY_map = require('./routes/NY_map');
 
 var app = express();
 
@@ -29,6 +29,7 @@ app.use('/users', users);
 
 
 app.get('/index_map', index_map.do_work);
+app.get('/New_York', NY_map.do_work);
 
 
 // catch 404 and forward to error handler
