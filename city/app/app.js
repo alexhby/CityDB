@@ -9,7 +9,8 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var index_map = require('./routes/index_map')
 var NY_map = require('./routes/NY_map');
-
+var mongodb_query_result = require('./routes/mongodb_query_result');
+var mongodb_query = require('./routes/mongodb_query');
 var app = express();
 
 // view engine setup
@@ -30,7 +31,8 @@ app.use('/users', users);
 
 app.get('/index_map', index_map.do_work);
 app.get('/New_York', NY_map.do_work);
-
+app.get('/mongodb_query', mongodb_query.do_work);
+app.get('/mongodb_query_result', mongodb_query_result.do_work)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

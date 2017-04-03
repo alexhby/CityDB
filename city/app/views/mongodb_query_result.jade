@@ -26,19 +26,25 @@ html
     #map
     script.
       function initMap() {
-      var uluru = {lat: 39.95240000000, lng: -75.16530000000};
+      var uluru = {lat: 37, lng: -100};
       var map = new google.maps.Map(document.getElementById('map'), {
-      zoom : 10,
+      zoom : 4,
       center: uluru
       });
       var results = !{JSON.stringify(results)};
-
+      var infos = !{JSON.stringify(infos)};
+      var infowindow = new google.maps.InfoWindow();
       console.log(results);
       for(var i = 0; i< results.length; i++)
       {
-         var pos = results[i];
-         console.log(pos);
-         var marker = new google.maps.Marker({position: pos,map: map});
+        var pos = results[i];
+        marker = new google.maps.Marker({position: pos,map: map});
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+          return function() {
+          infowindow.setContent(infos[i]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
       }
       }
 
