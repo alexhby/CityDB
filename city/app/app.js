@@ -13,6 +13,9 @@ var NY_map = require('./routes/NY_map');
 var correlation_search = require('./routes/correlation_search')
 var correlation = require('./routes/correlation')
 
+var mongodb_query_result = require('./routes/mongodb_query_result');
+var mongodb_query = require('./routes/mongodb_query');
+
 var app = express();
 
 // view engine setup
@@ -38,6 +41,8 @@ app.get('/correlation_search', correlation_search.do_work);
 app.get('/correlation', correlation.do_work);
 
 
+app.get('/mongodb_query', mongodb_query.do_work);
+app.get('/mongodb_query_result', mongodb_query_result.do_work);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
