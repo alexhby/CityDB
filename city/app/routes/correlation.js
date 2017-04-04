@@ -1,0 +1,63 @@
+// query 4
+
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'aws-us-east-1-portal.26.dblayer.com',
+  port     : '17934',
+  user     : 'admin',
+  password : 'citydb1234',
+  database : 'citydb'
+});
+
+function query_correltion(res, state){
+
+    var i = 0;
+    var myData = [];
+
+    query = "SELECT TC.local_name, T3.geo_lat, T3.geo_lng FROM (SELECT T1.local_name FROM city T1, company C WHERE C.City = T1.local_name";
+    if(state){
+        query += " AND T1.State = '";
+        query += state;
+        query += "'"
+    }
+    
+    query += " GROUP BY T1.local_name ORDER BY count(C.id) DESC LIMIT 30) TC JOIN (SELECT T2.local_name FROM city T2, college1 U WHERE U.CITY = T2.local_name";
+    if(state){
+        query += " AND U.STABBR = '";
+        query += state;
+        query += "'"
+    }
+    query += " GROUP BY T2.local_name ORDER BY count(U.ID) DESC LIMIT 30) TU ON TC.local_name = TU.local_name, city T3 WHERE TC.local_name = T3.local_name";
+    if(state){
+        query += " AND T3.State = '";
+        query += state;
+        query += "'";
+    }
+
+
+    connection.query(query, function(err, rows, fields) {
+            if (err) console.log(err);
+            else {
+                for(i = 0; i<rows.length; i++) {
+                    var v1 = rows[i]['geo_lat'];
+    				var v2 = rows[i]['geo_lng'];
+                    // filter outlier
+    				if(v1 < 49 && v1 > 23 && v2 < -65 && v2 > -130){
+    					var data = {lat: v1, lng: v2};
+    					myData.push(data);
+    					console.log(rows[i]['local_name']);
+                    }
+                }
+
+                res.render('correlation.jade', {
+                    title: 'map',
+                    results: myData
+                });
+            }
+    });
+}
+
+exports.do_work = function(req, res){
+    query_correltion(res, req.query.state);
+};
+

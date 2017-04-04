@@ -10,6 +10,9 @@ var users = require('./routes/users');
 var index_map = require('./routes/index_map')
 var NY_map = require('./routes/NY_map');
 
+var correlation_search = require('./routes/correlation_search')
+var correlation = require('./routes/correlation')
+
 var app = express();
 
 // view engine setup
@@ -30,6 +33,10 @@ app.use('/users', users);
 
 app.get('/index_map', index_map.do_work);
 app.get('/New_York', NY_map.do_work);
+
+app.get('/correlation_search', correlation_search.do_work);
+app.get('/correlation', correlation.do_work);
+
 
 
 // catch 404 and forward to error handler
