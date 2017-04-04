@@ -15,10 +15,11 @@ html
           a(href='#') Menu 2
         li
           a(href='#') Menu 3
-    p
-    h3 Query Correlation Between Colleges and Companies
-    h4  #{title}:
-    .container
-    form(method='get', action='/correlation')
-      input(name='state', value='')
-      input(type='submit', value='Show Top Cities')
+
+      p
+      h3 Correlation between colleges and companies
+      h5 Given a state abbr, find the cities with most colleges and companies.
+      p
+      form(method='get', action='/correlation')
+        input(name='state', placeholder='Enter a state abbr' required)
+        input(type='submit', value='Show Top Cities')

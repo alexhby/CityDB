@@ -22,15 +22,23 @@ html
           a(href='#') Menu 2
         li
           a(href='#') Menu 3
-    h3 Query Correlation Between Colleges and Companies
+      p
+      h3 Query Correlation Between Colleges and Companies
+      h5 Given a state abbr, find the cities with most colleges and companies.
+
+      p
+      form(method='get', action='/correlation_search')
+        input(type='submit', value='Return')
+
     
     #map
     script.
       function initMap() {
+        var default_center = {lat: 40.7128, lng: -74.0059};
         var results = !{JSON.stringify(results)};
         var map = new google.maps.Map(document.getElementById('map'), {
         zoom : 5,
-        center: results[0]  // center at the first result
+        center: results[0]
         });
 
         console.log(results);
