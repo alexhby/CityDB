@@ -16,6 +16,8 @@ var correlation = require('./routes/correlation')
 var mongodb_query_result = require('./routes/mongodb_query_result');
 var mongodb_query = require('./routes/mongodb_query');
 
+var PPAP = require('./routes/college_choice');
+
 var app = express();
 
 // view engine setup
@@ -43,6 +45,7 @@ app.get('/correlation', correlation.do_work);
 
 app.get('/mongodb_query', mongodb_query.do_work);
 app.get('/mongodb_query_result', mongodb_query_result.do_work);
+app.get('/college_choice', PPAP.do_work);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

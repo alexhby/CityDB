@@ -1,0 +1,46 @@
+// Jade file to specify output of a persons list
+// Inherits from layout
+extend layout
+block navbarcontent
+    +nav_item("/","active") Sample Work
+    +nav_item("/college_choice") Your Work
+    +nav_item("/reference") Reference
+block content
+  CityDB Search online
+  script(type='text/javascript').
+    (function() {
+      var cx = '003166992595292943631:ngup2mzh0lc';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    })();
+  gcse:search
+  if flag == 0
+    p
+      |  #{title}:
+    // Create a table with one row per result
+    form(method="get", action="/college_choice")
+      p
+        select(name = "name")
+          - for (var inx = 0; inx < results.length; inx++)
+            option #{results[inx].state}
+        input(type='submit', value='show college info')
+  if flag == 1
+    table
+      - for (var inx = 0; inx < results.length; inx++)
+        tr
+          td=results[inx].NAME
+          td &nbsp;
+          td=results[inx].CITY
+          td &nbsp;
+          td=results[inx].STABBR
+          td &nbsp;
+          td=results[inx].TOT_ENROLL
+          td &nbsp;
+          td=results[inx].GRAD_DEBT_MDN_SUPP
+  // Put a click button that lets us return to the index page 
+  form(method='get', action='/college_choice')
+      input(type='submit', value='Return')
