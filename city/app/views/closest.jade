@@ -1,0 +1,18 @@
+extend layout
+block navbarcontent
+    +nav_item("/New_York","active") Home
+    +nav_item("") Menu 1
+    +nav_item("/setting") Setting
+
+block content
+    h3
+      | #{title}:
+    p
+      form(method="get", action="/closest_company", class="form-inline")
+          select(name="NAME")
+            - for result in results
+              option #{result}
+          br
+          br
+          input(type='Submit', value='Show Companies', class="btn btn-success")
+

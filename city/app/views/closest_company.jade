@@ -1,0 +1,51 @@
+extend layout
+block navbarcontent
+    +nav_item("/New_York","active") Home
+    +nav_item("") Menu 1
+    +nav_item("") Menu 2
+
+block content
+  h3
+    | #{title}:
+
+  p
+    table(class="table")
+      tr
+        th="Company Name"
+        th &nbsp;
+      - for (var inx = 0; inx < results.length; inx++)
+        tr
+          td #{results[inx].Name}
+          td &nbsp;
+  form(method='get', action='/closest')
+    input(type='submit', value='Return', class="btn btn-info")
+
+
+    #map
+    script.
+      function initMap() {
+      data = [];
+      for (var i = 0; i < results.length; i++) {
+        var latitude = results[i].latitude;
+        var longitude = results[i].longitude;
+        row = {lat: latitude, lng: longitude};
+        data.push(row);
+      }
+
+      var uluru = data[0];
+      var map = new google.maps.Map(document.getElementById('map'), {
+      zoom : 10,
+      center: uluru
+      });
+
+      console.log(data);
+      for(var i = 0; i< data.length; i++)
+      {
+         var pos = data[i];
+         console.log(pos);
+         var marker = new google.maps.Marker({position: pos,map: map});
+      }
+      }
+
+    script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyA0EficLF0ZQWEpJ-NqJFdWO5zTu8PeJ1o&callback=initMap')
+
