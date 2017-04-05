@@ -54,6 +54,13 @@ html
            var pos = results[i];
            console.log(pos);
            var marker = new google.maps.Marker({position: pos,map: map});
+
+           google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+              infowindow.setContent(infos[i]);
+              infowindow.open(map, marker);
+            }
+           })(marker, i));
         }
       }
 
