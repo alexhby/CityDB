@@ -1,0 +1,52 @@
+doctype html
+html
+  head
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    style.
+      #map {
+      top: 150px;
+      height: 400px;
+      width: 100%;
+      }
+  body
+    .container
+      h3 Inline List
+      ul.list-inline
+        li
+          a(href='New_York') Home
+        li
+          a(href='mongodb_query') mongodb_query
+        li
+          a(href='#') Menu 2
+        li
+          a(href='#') Menu 3
+     h3 My Google Maps Demo
+    #map
+    script.
+      function initMap() {
+      var uluru = {lat: 37, lng: -100};
+      var map = new google.maps.Map(document.getElementById('map'), {
+      zoom : 4,
+      center: uluru
+      });
+      var results = !{JSON.stringify(results)};
+      var infos = !{JSON.stringify(infos)};
+      var infowindow = new google.maps.InfoWindow();
+      console.log(results);
+      for(var i = 0; i< results.length; i++)
+      {
+        var pos = results[i];
+        marker = new google.maps.Marker({position: pos,map: map});
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+          return function() {
+          infowindow.setContent(infos[i]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+      }
+      }
+
+    script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyA0EficLF0ZQWEpJ-NqJFdWO5zTu8PeJ1o&callback=initMap')
+

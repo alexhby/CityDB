@@ -1,0 +1,61 @@
+doctype html
+html
+  head
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    style.
+      #map {
+      top: 150px;
+      height: 400px;
+      width: 100%;
+      }
+  body
+    .container
+      h3 Inline List
+      ul.list-inline
+        li
+          a(href='New_York') Home
+        li
+          a(href='#') Menu 1
+        li
+          a(href='#') Menu 2
+        li
+          a(href='#') Menu 3
+      p
+      h3 Query Correlation Between Colleges and Companies
+      h5 Given a state abbr, find the cities with most colleges and companies.
+
+      p
+      form(method='get', action='/correlation_search')
+        input(type='submit', value='Return')
+
+    
+    #map
+    script.
+      function initMap() {
+        var results = !{JSON.stringify(results)};
+        var center = {lat: 40.2042, lng: -98.6054}; // default value
+        var myZoom = 3;                               // zoom for the case of no result
+        if(results.length != 0){
+          center = results[0]
+          myZoom = 5;
+        }
+        var map = new google.maps.Map(document.getElementById('map'), {
+        zoom : myZoom,
+        center: center
+        });
+
+
+
+        console.log(results);
+        for(var i = 0; i< results.length; i++)
+        {
+           var pos = results[i];
+           console.log(pos);
+           var marker = new google.maps.Marker({position: pos,map: map});
+        }
+      }
+
+    script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyA0EficLF0ZQWEpJ-NqJFdWO5zTu8PeJ1o&callback=initMap')
+
