@@ -61,9 +61,7 @@ app.get('/New_York', NY_map.do_work);
 app.get('/closest', closest.do_work);
 app.get('/closest_company', closest_company.do_work);
 
-<<<<<<< HEAD
 /// catch 404 and forward to error handler
-=======
 app.get('/correlation_search', correlation_search.do_work);
 app.get('/correlation', correlation.do_work);
 
@@ -73,7 +71,6 @@ app.get('/mongodb_query_result', mongodb_query_result.do_work);
 app.get('/college_choice', PPAP.do_work);
 
 // catch 404 and forward to error handler
->>>>>>> 6c6b30fe9f5a5d11ffd5654c5ecdb1c01555f58f
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
