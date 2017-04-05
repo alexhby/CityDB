@@ -34,12 +34,19 @@ html
     #map
     script.
       function initMap() {
-        var default_center = {lat: 40.7128, lng: -74.0059};
         var results = !{JSON.stringify(results)};
+        var center = {lat: 40.2042, lng: -98.6054}; // default value
+        var myZoom = 3;                               // zoom for the case of no result
+        if(results.length != 0){
+          center = results[0]
+          myZoom = 5;
+        }
         var map = new google.maps.Map(document.getElementById('map'), {
-        zoom : 5,
-        center: results[0]
+        zoom : myZoom,
+        center: center
         });
+
+
 
         console.log(results);
         for(var i = 0; i< results.length; i++)
