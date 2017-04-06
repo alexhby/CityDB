@@ -46,7 +46,8 @@ html
         center: center
         });
 
-
+        var city_names = !{JSON.stringify(city_names)};
+        var infowindow = new google.maps.InfoWindow();
 
         console.log(results);
         for(var i = 0; i< results.length; i++)
@@ -57,7 +58,7 @@ html
 
            google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-              infowindow.setContent(infos[i]);
+              infowindow.setContent(city_names[i]);
               infowindow.open(map, marker);
             }
            })(marker, i));

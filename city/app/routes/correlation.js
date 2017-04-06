@@ -12,7 +12,8 @@ var connection = mysql.createConnection({
 function query_correltion(res, state){
 
     var i = 0;
-    var myData = [];
+    var city_locations = [];
+    var city_names = [];
 
     query = "SELECT TC.local_name, T3.geo_lat, T3.geo_lng FROM (SELECT T1.local_name FROM city T1, company C WHERE C.City = T1.local_name";
     if(state){
@@ -44,14 +45,17 @@ function query_correltion(res, state){
                     // filter outlier
     				if(v1 < 49 && v1 > 23 && v2 < -65 && v2 > -130){
     					var data = {lat: v1, lng: v2};
-    					myData.push(data);
+    					city_locations.push(data);
+                        city_names.push(rows[i]['local_name']);
+
     					console.log(rows[i]['local_name']);
                     }
                 }
 
                 res.render('correlation.jade', {
                     title: 'map',
-                    results: myData
+                    results: city_locations,
+                    city_names: city_names
                 });
             }
     });
