@@ -6,23 +6,48 @@ html
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
     style.
       #map {
-      top: 150px;
-      height: 400px;
+      position:absolute;
+      top: 10x;
+      height: 500px;
       width: 100%;
       }
   body
-    .container
-      h3 Inline List
-      ul.list-inline
-        li
-          a(href='New_York') Home
-        li
-          a(href='#') Menu 1
-        li
-          a(href='#') Menu 2
-        li
-          a(href='#') Menu 3
-     h3 My Google Maps Demo
+    nav.nav.navbar-inverse.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          a.navbar-brand(href='#') Explore
+        ul.nav.navbar-nav.navbar-right
+          li
+            a(href='New_York') Home
+          li
+            a(href='/setting') Setting
+          li
+            a(href='/signout', class='text-center new-account') Sign Out
+    br
+    br
+    .jumbotron
+      .container
+        .row
+          .col-sm-6.col-md-3
+            a.thumbnail(href='/correlation_search')
+              .caption
+                h4
+                  font(face='verdana') Correlation Search
+          .col-sm-6.col-md-3
+            a.thumbnail(href='/college_choice')
+              .caption
+                h4
+                  font(face='verdana') College Choice
+          .col-sm-6.col-md-3
+            a.thumbnail(href='/closest')
+              .caption
+                h4
+                  font(face='verdana') Closest Companies
+          .col-sm-6.col-md-3
+            a.thumbnail(href='/mongodb_query')
+              .caption
+                h4
+                  font(face='verdana') Mongodb
     #map
     script.
       function initMap() {

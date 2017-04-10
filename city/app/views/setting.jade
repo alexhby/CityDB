@@ -1,8 +1,11 @@
 extend layout
 block navbarcontent
-    +nav_item("/New_York","active") Home
-    +nav_item("") Menu 1
-    +nav_item("/setting") Setting
+  .container-fluid
+    ul.nav.navbar-nav.navbar-right
+      li
+        a(href='New_York') Home
+      li
+        a(href='/setting') Setting
 
 block content
   h3
