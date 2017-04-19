@@ -11,17 +11,19 @@ html
       width: 100%;
       }
   body
+    nav.nav.navbar-inverse.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          a.navbar-brand(href='#') Explore
+        ul.nav.navbar-nav.navbar-right
+          li
+            a(href='New_York') Home
+          li
+            a(href='/setting') Setting
+          li
+            a(href='/signout', class='text-center new-account') Sign Out
+
     .container
-      h3 Inline List
-      ul.list-inline
-        li
-          a(href='New_York') Home
-        li
-          a(href='#') Menu 1
-        li
-          a(href='#') Menu 2
-        li
-          a(href='#') Menu 3
       p
       h3 Query Correlation Between Colleges and Companies
       h5 Given a state abbr, find the cities with most colleges and companies.

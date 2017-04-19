@@ -4,17 +4,19 @@ html
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
   body
+    nav.nav.navbar-inverse.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          a.navbar-brand(href='#') Explore
+        ul.nav.navbar-nav.navbar-right
+          li
+            a(href='New_York') Home
+          li
+            a(href='/setting') Setting
+          li
+            a(href='/signout', class='text-center new-account') Sign Out
+
     .container
-      h3 Inline List
-      ul.list-inline
-        li
-          a(href='New_York') Home
-        li
-          a(href='#') Menu 1
-        li
-          a(href='#') Menu 2
-        li
-          a(href='#') Menu 3
 
       p
       h3 Correlation between colleges and companies
@@ -23,3 +25,5 @@ html
       form(method='get', action='/correlation')
         input(name='state', placeholder='Enter a state abbr' required)
         input(type='submit', value='Show Top Cities')
+      p
+      img(src="https://media.timeout.com/images/103444978/image.jpg" width="512" height="341")
