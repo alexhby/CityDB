@@ -5,7 +5,8 @@ block navbarcontent
     +nav_item("/index_map","active") home
     +nav_item("/college_choice") this page
 block content
-  CityDB Search online
+  CityDB Search online    
+  img(src="https://www.gstatic.com/images/branding/googlelogo/2x/googlelogo_color_284x96dp.png", width="200" height=67, alt="Image Title")
   script(type='text/javascript').
     (function() {
       var cx = '003166992595292943631:ngup2mzh0lc';
@@ -18,6 +19,7 @@ block content
     })();
   gcse:search
   if flag == 0
+    img(src="https://scontent.cdninstagram.com/t51.2885-15/s1080x1080/e35/17881858_1102260876544709_1227002693961121792_n.jpg", width="500" height=400, alt="Image Title")
     p
       |  #{title}:
     // Create a table with one row per result
@@ -26,7 +28,7 @@ block content
         select(name = "name")
           - for (var inx = 0; inx < results.length; inx++)
             option #{results[inx].state}
-        input(type='submit', value='show college info')
+        input(type='submit', value='show college info', class="btn btn-success")
   if flag == 1
     table
       - for (var inx = 0; inx < results.length; inx++)
@@ -42,4 +44,4 @@ block content
           td=results[inx].GRAD_DEBT_MDN_SUPP
   // Put a click button that lets us return to the index page 
   form(method='get', action='/college_choice')
-      input(type='submit', value='Return')
+      input(type='submit', value='Return', class="btn btn-success")
