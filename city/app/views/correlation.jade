@@ -22,7 +22,10 @@ html
             a(href='/setting') Setting
           li
             a(href='/signout', class='text-center new-account') Sign Out
-
+    br
+    br
+    br
+    br
     .container
       p
       h3 Query Correlation Between Colleges and Companies
@@ -30,7 +33,7 @@ html
 
       p
       form(method='get', action='/correlation_search')
-        input(type='submit', value='Return')
+        button(class='btn btn-default btn-sm', type='submit') Return
 
     
     #map

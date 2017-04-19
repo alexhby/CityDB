@@ -15,15 +15,18 @@ html
             a(href='/setting') Setting
           li
             a(href='/signout', class='text-center new-account') Sign Out
-
+    br
+    br
+    br
+    br
     .container
-
       p
-      h3 Correlation between colleges and companies
+      h3 Query Correlation Between Colleges and Companies
       h5 Given a state abbr, find the cities with most colleges and companies.
+
       p
       form(method='get', action='/correlation')
         input(name='state', placeholder='Enter a state abbr' required)
-        input(type='submit', value='Show Top Cities')
+        button(class='btn btn-primary btn-sm', type='submit') Show Top Cities
       p
       img(src="https://media.timeout.com/images/103444978/image.jpg" width="512" height="341")
