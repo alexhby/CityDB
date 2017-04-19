@@ -2,8 +2,17 @@
 // Inherits from layout
 extend layout
 block navbarcontent
-    +nav_item("/index_map","active") home
-    +nav_item("/college_choice") this page
+  nav.nav.navbar-inverse.navbar-fixed-top
+        .container-fluid
+          .navbar-header
+            a.navbar-brand(href='#') Explore
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='New_York') Home
+            li
+              a(href='/setting') Setting
+            li
+              a(href='/signout', class='text-center new-account') Sign Out
 block content
   CityDB Search online    
   img(src="https://www.gstatic.com/images/branding/googlelogo/2x/googlelogo_color_284x96dp.png", width="200" height=67, alt="Image Title")
