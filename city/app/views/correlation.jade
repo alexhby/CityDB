@@ -51,7 +51,11 @@ html
         center: center
         });
 
+        // get other data for infowindow
         var city_names = !{JSON.stringify(city_names)};
+        var company_nums = !{JSON.stringify(company_nums)};
+        var college_nums = !{JSON.stringify(college_nums)};
+
         var infowindow = new google.maps.InfoWindow();
 
         console.log(results);
@@ -63,7 +67,7 @@ html
 
            google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-              infowindow.setContent(city_names[i]);
+              infowindow.setContent('<strong>' + city_names[i] + '</strong><br>Number of schools: ' + college_nums[i] + '<br>Number of companies: ' + company_nums[i]);
               infowindow.open(map, marker);
             }
            })(marker, i));
