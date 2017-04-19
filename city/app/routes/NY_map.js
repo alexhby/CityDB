@@ -27,6 +27,8 @@ function query_city(req, res){
     
     var myData = [];
 
+    var infos = [];
+
 
     query = "select distinct city.local_name, city.geo_lat, city.geo_lng from (select distinct(City) from company) f join city on city.local_name = f.City";
         connection.query(query, function(err, rows, fields) {
@@ -39,17 +41,21 @@ function query_city(req, res){
 				//console.log(rows[i]);
                                 var v1 = rows[i]['geo_lat'];
 				var v2 = rows[i]['geo_lng'];
+                                var v3 = rows[i]['local_name'];
 				if(v1 < 49 && v1 > 25 && v2 < -70 && v2 > -130)
                                 {
 					var data = {lat: v1, lng: v2};
+                                        var info = v3;
 					myData.push(data);
+                                        infos.push(info);
 					console.log(rows[i]['local_name']);
 				}
     			}
 
 			    res.render('NY_map.jade', {
 			          title: 'map',
-			          results: myData
+			          results: myData,
+                                  infos: infos
 				});
 
 			
