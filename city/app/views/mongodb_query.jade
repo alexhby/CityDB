@@ -11,21 +11,25 @@ html
       width: 100%;
       }
   body
+    nav.nav.navbar-inverse.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          a.navbar-brand(href='#') Explore
+        ul.nav.navbar-nav.navbar-right
+          li
+            a(href='New_York') Home
+          li
+            a(href='/setting') Setting
+          li
+            a(href='/signout', class='text-center new-account') Sign Out
+    br
+    br
+    br
+    br
     .container
-      h3 Inline List
-      ul.list-inline
-        li
-          a(href='New_York') Home
-        li
-          a(href='mongodb_query') mongodb_query
-        li
-          a(href='#') Menu 2
-        li
-          a(href='#') Menu 3
-
-    .container
-    form(method='get', action='/mongodb_query_result')
-      input(name='text', value='')
+        form(method='get', action='/mongodb_query_result')
+           input(name='text', value='')
+           button(class='btn btn-primary', type='submit') Search
 
 
      h3 My Google Maps Demo
