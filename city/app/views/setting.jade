@@ -1,11 +1,16 @@
 extend layout
 block navbarcontent
-  .container-fluid
-    ul.nav.navbar-nav.navbar-right
-      li
-        a(href='New_York') Home
-      li
-        a(href='/setting') Setting
+    nav.nav.navbar-inverse.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          a.navbar-brand(href='#') Explore
+        ul.nav.navbar-nav.navbar-right
+          li
+            a(href='New_York') Home
+          li
+            a(href='/setting') Setting
+          li
+            a(href='/signout', class='text-center new-account') Sign Out
 
 block content
   h3
