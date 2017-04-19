@@ -1,14 +1,24 @@
 extend layout
 block navbarcontent
-    +nav_item("/New_York","active") Home
-    +nav_item("") Menu 1
-    +nav_item("/setting") Setting
+    nav.nav.navbar-inverse.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          a.navbar-brand(href='#') Explore
+        ul.nav.navbar-nav.navbar-right
+          li
+            a(href='New_York') Home
+          li
+            a(href='/setting') Setting
+          li
+            a(href='/signout', class='text-center new-account') Sign Out
 
 block content
+    .image-block
+      img(src="/static/img-1.jpg")
     h3
       | #{title}:
     p
-      form(method="get", action="/closest_company", class="form-inline")
+      form(method="get", action="closest_company", class="form-inline")
           select(name="NAME")
             - for result in results
               option #{result}

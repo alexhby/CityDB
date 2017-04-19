@@ -1,8 +1,16 @@
 extend layout
 block navbarcontent
-    +nav_item("/New_York","active") Home
-    +nav_item("") Menu 1
-    +nav_item("") Menu 2
+    nav.nav.navbar-inverse.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          a.navbar-brand(href='#') Explore
+        ul.nav.navbar-nav.navbar-right
+          li
+            a(href='New_York') Home
+          li
+            a(href='/setting') Setting
+          li
+            a(href='/signout', class='text-center new-account') Sign Out
 
 block content
   h3
