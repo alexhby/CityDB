@@ -22,6 +22,7 @@ block content
         td="Username"
         td #{user.username}
         td #{user.fb.id}
+        td #{user.twitter.id}
       tr
         td="Email"
         td #{user.email}
@@ -29,8 +30,10 @@ block content
       tr
         td="First Name"
         td #{user.firstName}
+        td #{user.twitter.username}
       tr
         td="Last Name"
         td #{user.lastName}
+        td #{user.twitter.displayName}
 
   a(href='/signout', class='text-center new-account') Sign Out

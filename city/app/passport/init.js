@@ -2,6 +2,7 @@ var login = require('./login');
 var signup = require('./signup');
 var User = require('../models/user');
 var facebook = require('./facebook');
+var twitter = require('./twitter');
 
 module.exports = function(passport){
 
@@ -23,5 +24,5 @@ module.exports = function(passport){
     signup(passport);
     // Setting up Passport Strategies for Facebook and Twitter
     facebook(passport);
-
+    twitter(passport);
 }
