@@ -49,5 +49,20 @@ module.exports = function(passport){
 		res.redirect('/');
 	});
 
+	// route for facebook authentication and login
+	// different scopes while logging in
+	router.get('/login/facebook', 
+		
+		passport.authenticate('facebook', { scope : 'email' }
+	));
+
+	// handle the callback after facebook has authenticated the user
+	router.get('/login/facebook/callback',
+		passport.authenticate('facebook', {
+			successRedirect : '/New_York',
+			failureRedirect : '/'
+		})
+	);
+
 	return router;
 }
