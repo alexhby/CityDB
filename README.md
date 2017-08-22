@@ -1,3 +1,1 @@
 # CityDB
-
-Group 26
